@@ -23,7 +23,7 @@ def hello():
     task_arn = metadata.get("TaskARN") if metadata else "Metadata not available"
 
     return f"""
-    <h1>Hello from ECS Fargate 🚀</h1>
+    <h1>Hello from Task 09 Prod environment 🚀</h1>
     <p><b>Container Hostname:</b> {hostname}</p>
     <p><b>Task ARN:</b> {task_arn}</p>
     """

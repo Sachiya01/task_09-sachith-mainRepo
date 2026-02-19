@@ -2,7 +2,7 @@ module "prod_ecs" {
   source            = "../../modules/ECS"
   cluster_name      = "${var.common_name}-prod-ecs-cluster"
   family            = var.family
-  service_name      = "${var.common_name}-prod_service_name"
+  service_name      = "${var.common_name}-prod_service"
   image             = var.image
   execution_role    = data.aws_iam_role.ecsTaskExecutionRole.arn
 

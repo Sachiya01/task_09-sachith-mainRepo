@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         AWS_REGION      = "us-east-1"         
-        CLUSTER_NAME    = "task_09-sachith-dev-ecs-cluster"    
-        SERVICE_NAME    = "task_09-sachith-dev_service"     
-        TASK_DEF_NAME   = "dev_task"         
+        CLUSTER_NAME    = "task_09-sachith-prod-ecs-cluster"    
+        SERVICE_NAME    = "task_09-sachith-prod_service"     
+        TASK_DEF_NAME   = "prod_task"         
         ECR_REPO        = "041360578609.dkr.ecr.us-east-1.amazonaws.com/sachith_test" 
         IMAGE_TAG       = "build-${env.BUILD_NUMBER}"
     }
@@ -24,17 +24,17 @@ pipeline {
                 script {
                     echo "Building Docker image..."
                     sh '''
-                    cd Application
+                    cd Application/prodApp
                     docker build -t ${ECR_REPO}:${IMAGE_TAG} .
                     '''
                 }
             }
         }
 
-        stage('Authenticate to DEV ECR') {
+        stage('Authenticate to PROD ECR') {
             steps {
                 script {
-                    echo "Logging in to DEV ECR..."
+                    echo "Logging in to PROD ECR..."
                     sh '''
                         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
                     '''
@@ -42,18 +42,18 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image to DEV ECR') {
+        stage('Push Docker Image to PROD ECR') {
             steps {
                 script {
-                    echo "Pushing Docker image to DEV ECR.."
+                    echo "Pushing Docker image to PROD ECR.."
                     sh "docker push ${ECR_REPO}:${IMAGE_TAG}"
                 }
             }
         }
-        stage('Update DEV ECS Task Definition') {
+        stage('Update PROD ECS Task Definition') {
             steps {
         script {
-            echo "Updating the DEV task definition..."
+            echo "Updating the PROD task definition..."
             sh '''
                 # Fetch current task definition
                 aws ecs describe-task-definition \
@@ -90,10 +90,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to DEV ECS Service') {
+        stage('Deploy to PROD ECS Service') {
             steps {
                 script {
-                    echo "Updating DEV ECS service with new task definition..."
+                    echo "Updating PROD ECS service with new task definition..."
                     sh '''
                         NEW_REV=$(jq -r '.taskDefinition.taskDefinitionArn' new-taskdef-output.json)
                         aws ecs update-service \
