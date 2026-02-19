@@ -6,7 +6,7 @@ pipeline {
         CLUSTER_NAME    = "task_09-sachith-prod-ecs-cluster"    
         SERVICE_NAME    = "task_09-sachith-prod_service"     
         TASK_DEF_NAME   = "prod_task"         
-        ECR_REPO        = "041360578609.dkr.ecr.us-east-1.amazonaws.com/task_09-sachith-prod-ecr" 
+        ECR_REPO        = "041360578609.dkr.ecr.us-east-1.amazonaws.com/task_09-sachith-prod_ecr" 
         IMAGE_TAG       = "build-${env.BUILD_NUMBER}"
     }
 
