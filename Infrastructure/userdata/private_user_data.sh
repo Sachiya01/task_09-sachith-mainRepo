@@ -31,7 +31,7 @@ sudo apt install jenkins -y
 systemctl enable jenkins
 systemctl start jenkins
 
-sudo usermod -aG docker jenkins
+
 
 echo "Jenkins setup completed"
 echo "Jenkins setup completed"
@@ -75,5 +75,9 @@ echo "Docker setup completed"
 echo "Docker setup completed"
 echo "Docker setup completed"
 
+sudo usermod -aG docker jenkins
 
+echo "Usermod for Jenkins completed"
+echo "Usermod for Jenkins completed"  
+echo "Usermod for Jenkins completed"
 

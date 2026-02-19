@@ -77,6 +77,6 @@ pub_instance_type = "t3.micro"
 ami      = "ami-0b6c6ebed2801a5cb"
 key_pair = "tf_sachith"
 
-private_user_data = "C:\\Users\\SachithLiyanage\\Desktop\\Task_09\\userdata\\private_user_data.sh"
-public_user_data  = "C:\\Users\\SachithLiyanage\\Desktop\\Task_09\\userdata\\public_user_data.sh"
+private_user_data = "C:\\Users\\SachithLiyanage\\Desktop\\Task09-test\\Infrastructure\\userdata\\private_user_data.sh"
+public_user_data  = "C:\\Users\\SachithLiyanage\\Desktop\\Task09-test\\Infrastructure\\userdata\\public_user_data.sh"
 
