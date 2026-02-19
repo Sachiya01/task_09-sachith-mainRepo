@@ -8,4 +8,5 @@ subnet_id = module.public_subnet.ids
   security_groups = [module.public_sg.sg_id]
   public_ip = true
   user_data = var.public_user_data
+  iam_instance_profile = null
 }

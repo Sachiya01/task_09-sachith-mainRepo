@@ -8,3 +8,7 @@ variable "security_groups" {
 variable "public_ip" {}
 variable "name" {}
 variable "user_data" {}
+variable "iam_instance_profile" {
+  default = null
+  
+}

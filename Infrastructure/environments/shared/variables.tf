@@ -116,19 +116,5 @@ variable "public_user_data" {
   type        = string
 }
 
-variable "dev_vpc_id" {
-  
-}
 
-variable "dev_vpc_cidr" {
-  
-}
-
-variable "dev_pvt_rt_id1" {
-  
-}
-
-variable "dev_pvt_rt_id2" {
-  
-}
 

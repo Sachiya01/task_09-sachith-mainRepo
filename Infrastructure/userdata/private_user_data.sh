@@ -10,33 +10,70 @@ sudo apt clean
 sudo rm -rf /var/lib/apt/lists/*
 
 
-
-# Update system
+#Jenkins installation
 sudo apt update -y
 
-# Install Java
 sudo apt install -y openjdk-21-jdk
 
-# Create keyrings directory
 mkdir -p /etc/apt/keyrings
 
-# Add Jenkins GPG key
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 
-# Add Jenkins repository (THIS WAS MISSING / WRONG)
 echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 
-# Update again so Jenkins appears
 sudo apt update -y
 
-# Install Jenkins
 sudo apt install jenkins -y
 
-# Enable and start Jenkins
 systemctl enable jenkins
 systemctl start jenkins
 
+sudo usermod -aG docker jenkins
+
 echo "Jenkins setup completed"
+echo "Jenkins setup completed"
+echo "Jenkins setup completed"
+echo "Jenkins setup completed"
+echo "Jenkins setup completed"
+
+
+
+#Install aws cli 
+
+sudo apt install curl unzip -y
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+
+unzip awscliv2.zip
+sudo ./aws/install 
+
+echo "AWS setup completed"
+echo "AWS setup completed"
+echo "AWS setup completed"
+echo "AWS setup completed"
+echo "AWS setup completed"
+
+
+#Install docker
+
+sudo apt-get update
+sudo apt-get install ca-certificates 
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+echo "Docker setup completed"
+echo "Docker setup completed"
+echo "Docker setup completed"
+echo "Docker setup completed"
+echo "Docker setup completed"
+
+
+

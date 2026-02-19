@@ -80,8 +80,3 @@ key_pair = "tf_sachith"
 private_user_data = "C:\\Users\\SachithLiyanage\\Desktop\\Task_09\\userdata\\private_user_data.sh"
 public_user_data  = "C:\\Users\\SachithLiyanage\\Desktop\\Task_09\\userdata\\public_user_data.sh"
 
-dev_pvt_rt_id1 = "rtb-0e9446700257f00ba"
-dev_pvt_rt_id2 = "rtb-064847fb80549c231"
-dev_vpc_id = "vpc-01c3d0a01454cf901"
-dev_vpc_cidr = "10.1.0.0/16"
-

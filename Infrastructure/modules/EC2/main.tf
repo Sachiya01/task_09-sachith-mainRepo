@@ -4,7 +4,7 @@ resource "aws_instance" "this" {
   subnet_id     = var.subnet_id
   key_name      = var.key_name
   user_data     = file(var.user_data)
-
+  iam_instance_profile = var.iam_instance_profile
   vpc_security_group_ids = var.security_groups
 
   associate_public_ip_address = var.public_ip

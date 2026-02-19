@@ -1,4 +1,6 @@
 #!/bin/bash
+#Pritunl installation
+
 sudo apt update -y 
 
 sudo tee /etc/apt/sources.list.d/mongodb-org.list << EOF
