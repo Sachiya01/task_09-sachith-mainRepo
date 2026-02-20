@@ -1,4 +1,4 @@
-#Comment on first apply
+/* #Comment on first apply
 
 resource "aws_vpc_peering_connection" "shared_to_dev" {
   vpc_id        = module.shared_vpc.vpc_id
@@ -27,3 +27,4 @@ data "terraform_remote_state" "dev" {
     region = "us-east-1"
   }
 }
+ */

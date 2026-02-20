@@ -76,6 +76,7 @@ echo "Docker setup completed"
 echo "Docker setup completed"
 
 sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
 
 echo "Usermod for Jenkins completed"
 echo "Usermod for Jenkins completed"  

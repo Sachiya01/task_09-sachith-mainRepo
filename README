@@ -1,6 +1,4 @@
-
-
-This repository contains the Terraform infrastructure and application deployment code for **Shared**, **Dev**, and **Prod** environments.
+This repository contains the Terraform infrastructure and application deployment code for SHARED, DEV, and PROD environments.
 
 
 ```
@@ -14,53 +12,54 @@ This repository contains the Terraform infrastructure and application deployment
 ---
 
 
-The `INFRASTRUCTURE` folder contains all Terraform configurations for **Shared**, **Dev**, and **Prod** environments.
+The `Infrastructure` folder contains all Terraform configurations for SHARED, DEV, and PROD environments.
 
-> ⚠️ **Important:** Peering connections exist from Shared → Dev and Shared → Prod. Proper Terraform run order is critical to avoid errors.
+>> $ IMPORTANT $ <<: Peering connections exist from Shared → Dev and Shared → Prod. 
+** Proper Terraform run order is critical to avoid errors.
+** Proper Terrafrom destroy order ir critical to destroy all infrastructure properly.
 
-### Terraform Deployment Steps
+Terraform Deployment Steps
 
-1. **Shared Environment**
+1. Shared Environment
 
    * Navigate to the `shared/` folder.
-   * **Comment out the peering connection block** in the Terraform files.
+   * Comment out the peering connection block in the Terraform files.
 
-     > The peering block contains all peering-related resources including state pull, data blocks, and routes.
+     >> The peering block contains all peering-related resources including state pull, data blocks, and routes.
+
    * Run:
-
-     ```bash
      terraform init
+     terraform validate
      terraform plan
      terraform apply
-     ```
 
-2. **Dev and Prod Environments**
+
+2. Dev and Prod Environments
 
    * Navigate to `dev/` and `prod/` folders.
    * **Comment out peering blocks** in these environments for the first run.
    * Run Terraform for each environment:
-
-     ```bash
      terraform init
+     terraform validate
      terraform plan
      terraform apply
-     ```
 
-3. **Enable Peering**
+3. Enable Peering
 
    * After all three environments are successfully created:
 
-     1. Uncomment the peering connection blocks in **Shared**, **Dev**, and **Prod** Terraform files.
+     1. Uncomment the peering connection blocks in Shared, Dev, and Prod Terraform files.
      2. Apply Terraform in the following order:
 
         * Shared → Dev → Prod
 
      * Run for each:
 
-       ```bash
+      
        terraform plan
+       terraform validate
        terraform apply
-       ```
+       
    * This ensures that all peering connections are correctly established.
 
 ---
@@ -69,11 +68,9 @@ The `INFRASTRUCTURE` folder contains all Terraform configurations for **Shared**
 
 The `APPLICATION` folder contains:
 
-* Applications for **Dev** and **Prod** environments
-* Jenkinsfiles for **2 pipelines**:
+* Applications for Dev and Prod environments
+* Jenkinsfiles for both Dev and Prod deployment pipelines:
 
-  * Dev pipeline
-  * Prod pipeline
 
 These pipelines automate deployment and can be executed via Jenkins.
 

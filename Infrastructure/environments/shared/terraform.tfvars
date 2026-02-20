@@ -19,8 +19,8 @@ public_sg_ingress_rules = [
     cidr_blocks = ["0.0.0.0/0"]
   },
   {
-    from_port   = 13353
-    to_port     = 13353
+    from_port   = 19001
+    to_port     = 19001
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   },
