@@ -1,7 +1,5 @@
 #Comment on first apply
 
-
-
 module "shared_dev_peer" {
   source = "../../modules/VPC_Peering"
 

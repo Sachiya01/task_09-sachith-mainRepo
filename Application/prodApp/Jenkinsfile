@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('Authenticate to PROD ECR') {
+        stage('Authenticate to PROD ECRa') {
             steps {
                 script {
                     echo "Logging in to PROD ECR..."
