@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a714d36c33f5a5430d78310d873bdbc62676a514
 This repository contains the Terraform infrastructure and application deployment code for SHARED, DEV, and PROD environments.
 
 
@@ -19,13 +14,9 @@ This repository contains the Terraform infrastructure and application deployment
 
 The `Infrastructure` folder contains all Terraform configurations for SHARED, DEV, and PROD environments.
 
-<<<<<<< HEAD
 >> $ IMPORTANT $ <<: Peering connections exist from Shared → Dev and Shared → Prod. 
 ** Proper Terraform run order is critical to avoid errors.
 ** Proper Terrafrom destroy order ir critical to destroy all infrastructure properly.
-=======
->> $ IMPORTANT $ <<: Peering connections exist from Shared → Dev and Shared → Prod. Proper Terraform run order is critical to avoid errors.
->>>>>>> a714d36c33f5a5430d78310d873bdbc62676a514
 
 Terraform Deployment Steps
 
@@ -36,11 +27,6 @@ Terraform Deployment Steps
 
      >> The peering block contains all peering-related resources including state pull, data blocks, and routes.
 
-<<<<<<< HEAD
-=======
-     >> The peering block contains all peering-related resources including state pull, data blocks, and routes.
-
->>>>>>> a714d36c33f5a5430d78310d873bdbc62676a514
    * Run:
      terraform init
      terraform validate
@@ -94,9 +80,5 @@ These pipelines automate deployment and can be executed via Jenkins.
 
 * Always follow the Terraform run order when managing environments with peering.
 * Make sure to version-control any changes in the peering blocks carefully.
-<<<<<<< HEAD
-* Ensure AWS credentials or IAM roles are correctly configured before running Terraform.
-=======
 * Ensure AWS credentials or IAM roles are correctly configured before running Terraform.
 
->>>>>>> a714d36c33f5a5430d78310d873bdbc62676a514
