@@ -157,7 +157,7 @@ pipeline {
                             --force-new-deployment
                     '''
                     }
-                    if (env.BRANCH_NAME == "master") {
+                    if (env.BRANCH_NAME == "main") {
                         echo "Updating PROD ECS service with new task definition..."
                     sh '''
                         NEW_REV=$(jq -r '.taskDefinition.taskDefinitionArn' new-taskdef-output.json)
