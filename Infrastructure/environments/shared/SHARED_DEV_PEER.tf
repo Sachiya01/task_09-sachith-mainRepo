@@ -1,4 +1,4 @@
-#Comment on first apply
+/* #Comment on first apply
 
 module "shared_dev_peer" {
   source = "../../modules/VPC_Peering"
@@ -21,3 +21,4 @@ data "terraform_remote_state" "dev" {
     region = "us-east-1"
   }
 }
+ */
