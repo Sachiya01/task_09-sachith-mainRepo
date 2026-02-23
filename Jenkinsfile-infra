@@ -16,18 +16,20 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                if (env.BRANCH_NAME == "dev") {
-                    sh '''
-                    cd Infrastructure/environments/dev
-                    terraform --version
-                    terraform init 
-                    '''
-                } else if (env.BRANCH_NAME == "main") {
-                    sh '''
-                    cd Infrastructure/environments/prod
-                    terraform --version
-                    terraform init 
-                    '''
+                script {
+                    if (env.BRANCH_NAME == "dev") {
+                        sh '''
+                        cd Infrastructure/environments/dev
+                        terraform --version
+                        terraform init 
+                        '''
+                    } else if (env.BRANCH_NAME == "main") {
+                        sh '''
+                        cd Infrastructure/environments/prod
+                        terraform --version
+                        terraform init 
+                        '''
+                    }
                 }
             
             }
@@ -35,37 +37,43 @@ pipeline {
 
         stage('Terraform Validate') {
             steps {
-                if (env.BRANCH_NAME == "dev") {
-                    sh '''
-                    cd Infrastructure/environments/dev
-                    terraform validate
-                    '''
-                } else if (env.BRANCH_NAME == "main") {
-                    sh '''
-                    cd Infrastructure/environments/prod
-                    terraform validate
-                    '''
+                script {
+                    if (env.BRANCH_NAME == "dev") {
+                        sh '''
+                        cd Infrastructure/environments/dev
+                        terraform validate
+                        '''
+                    } else if (env.BRANCH_NAME == "main") {
+                        sh '''
+                        cd Infrastructure/environments/prod
+                        terraform validate
+                        '''
+                    }
                 }
+                
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                if (env.BRANCH_NAME == "dev") {
-                    sh '''
-                    cd Infrastructure/environments/dev
-                    terraform plan \
-                       -input=false \
-                       -out=tfplan
-                    '''
-                } else if (env.BRANCH_NAME == "main") {
-                    sh '''
-                    cd Infrastructure/environments/prod
-                    terraform plan \
-                       -input=false \
-                       -out=tfplan
-                    '''
+                script {
+                     if (env.BRANCH_NAME == "dev") {
+                        sh '''
+                        cd Infrastructure/environments/dev
+                        terraform plan \
+                           -input=false \
+                           -out=tfplan
+                        '''
+                    } else if (env.BRANCH_NAME == "main") {
+                        sh '''
+                        cd Infrastructure/environments/prod
+                        terraform plan \
+                           -input=false \
+                           -out=tfplan
+                        '''
+                    }
                 }
+                
             }
         }
 
@@ -77,22 +85,24 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                if (env.BRANCH_NAME == "dev") {
-                    sh '''
-                    cd Infrastructure/environments/dev
-                    terraform apply \
-                     -input=false \
-                     -auto-approve \
-                    tfplan
-                '''
-                } else if (env.BRANCH_NAME == "main") {
-                    sh '''
-                    cd Infrastructure/environments/prod
-                    terraform apply \
-                     -input=false \
-                     -auto-approve \
-                    tfplan
-                '''
+                script {
+                    if (env.BRANCH_NAME == "dev") {
+                        sh '''
+                        cd Infrastructure/environments/dev
+                        terraform apply \
+                         -input=false \
+                         -auto-approve \
+                        tfplan
+                    '''
+                    } else if (env.BRANCH_NAME == "main") {
+                        sh '''
+                        cd Infrastructure/environments/prod
+                        terraform apply \
+                         -input=false \
+                         -auto-approve \
+                        tfplan
+                    '''
+                    }
                 }
             }
         }
