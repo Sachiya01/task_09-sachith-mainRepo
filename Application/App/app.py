@@ -22,10 +22,22 @@ def hello():
 
     task_arn = metadata.get("TaskARN") if metadata else "Metadata not available"
 
+    app_env = os.environ.get("APP_ENV")
+    if app_env:
+        app_env = app_env.lower()
+    else:
+        app_env = "dev"
+
+    if app_env == "prod":
+        env_message = "HELLO from PROD 🚀"
+    else:
+        env_message = "Hello from DEV 🛠️"
+
     return f"""
-    <h1>Hello from Task 09 Prod environment 🚀</h1>
+    <h1>{env_message}</h1>
     <p><b>Container Hostname:</b> {hostname}</p>
     <p><b>Task ARN:</b> {task_arn}</p>
+    <p><b>APP_ENV:</b> {app_env}</p>
     """
 
 if __name__ == "__main__":

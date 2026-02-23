@@ -1,4 +1,4 @@
-/* #Coment all on first terraform apply
+#Coment all on first terraform apply
 
 data "aws_vpc_peering_connection" "shared_to_dev" {
   filter {
@@ -30,4 +30,3 @@ resource "aws_route" "dev2_to_shared" {
   destination_cidr_block    = data.terraform_remote_state.shared.outputs.shared_vpc_cidr
   vpc_peering_connection_id = data.aws_vpc_peering_connection.shared_to_dev.id
 }
- */

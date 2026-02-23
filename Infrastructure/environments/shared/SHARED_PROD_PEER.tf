@@ -1,4 +1,4 @@
-/* module "shared_prod_peer" {
+module "shared_prod_peer" {
   source = "../../modules/VPC_Peering"
 
   name = "shared-to-prod"
@@ -19,4 +19,3 @@ data "terraform_remote_state" "prod" {
     region = "us-east-1"
   }
 }
- */
