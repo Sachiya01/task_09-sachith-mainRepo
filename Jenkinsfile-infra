@@ -17,24 +17,29 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 sh '''
-                  terraform --version
-                  terraform init 
+                cd Infrastructure/environments/$BRANCH_NAME
+                terraform --version
+                terraform init 
                 '''
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                sh 'terraform validate'
+                sh '''
+                cd Infrastructure/environments/$BRANCH_NAME
+                terraform validate
+                '''
             }
         }
 
         stage('Terraform Plan') {
             steps {
                 sh '''
-                  terraform plan \
-                    -input=false \
-                    -out=tfplan
+                cd Infrastructure/environments/$BRANCH_NAME
+                terraform plan \
+                   -input=false \
+                   -out=tfplan
                 '''
             }
         }
@@ -48,9 +53,10 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 sh '''
-                  terraform apply \
-                    -input=false \
-                    -auto-approve \
+                    cd Infrastructure/environments/$BRANCH_NAME
+                    terraform apply \
+                     -input=false \
+                     -auto-approve \
                     tfplan
                 '''
             }
