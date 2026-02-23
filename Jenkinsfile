@@ -102,7 +102,7 @@ pipeline {
                         }
 
 
-                        if (env.BRANCH_NAME == "master") {
+                        if (env.BRANCH_NAME == "main") {
                             echo "Updating the PROD task definition..."
                             sh '''
                                 # Fetch current task definition
